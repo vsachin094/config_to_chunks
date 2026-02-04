@@ -1,0 +1,249 @@
+[
+  {
+    "content": "hostname XR-PROD-EDGE-01",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "domain name example.net\ndomain lookup disable\nclock timezone IST 5 30\nservice timestamps log datetime localtime\nservice password-encryption",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "username admin\n group root-lr\n secret 10 $6$examplehashedpassword",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "username admin"
+    }
+  },
+  {
+    "content": "aaa group server tacacs+ TACACS-SERVERS\n server-private 10.10.10.10 key 7 070C285F4D06\n server-private 10.10.10.11 key 7 070C285F4D06\n timeout 5",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "aaa group server tacacs+ TACACS-SERVERS"
+    }
+  },
+  {
+    "content": "aaa authentication login default group TACACS-SERVERS local\naaa authorization exec default group TACACS-SERVERS local\naaa authorization commands default group TACACS-SERVERS local\naaa accounting exec default start-stop group TACACS-SERVERS",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "vrf MGMT\n address-family ipv4 unicast",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf MGMT"
+    }
+  },
+  {
+    "content": "vrf CUST-A\n address-family ipv4 unicast",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf CUST-A"
+    }
+  },
+  {
+    "content": "vrf CUST-B\n address-family ipv4 unicast",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf CUST-B"
+    }
+  },
+  {
+    "content": "interface MgmtEth0/RP0/CPU0/0\n description OOB Management\n vrf MGMT\n ipv4 address 192.168.10.10 255.255.255.0\n no shutdown",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface MgmtEth0/RP0/CPU0/0"
+    }
+  },
+  {
+    "content": "interface Loopback0\n description Router-ID\n ipv4 address 10.255.255.1 255.255.255.255",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Loopback0"
+    }
+  },
+  {
+    "content": "interface Loopback100\n description Services Loopback\n ipv4 address 10.255.255.100 255.255.255.255",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Loopback100"
+    }
+  },
+  {
+    "content": "interface TenGigE0/0/0/0\n description Core-Uplink-ISP1\n mtu 9216\n ipv4 address 172.16.1.2 255.255.255.252\n no shutdown",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface TenGigE0/0/0/0"
+    }
+  },
+  {
+    "content": "interface TenGigE0/0/0/1\n description Core-Uplink-ISP2\n mtu 9216\n ipv4 address 172.16.2.2 255.255.255.252\n no shutdown",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface TenGigE0/0/0/1"
+    }
+  },
+  {
+    "content": "interface TenGigE0/0/0/2\n description Customer-A-Access\n vrf CUST-A\n ipv4 address 192.168.101.1 255.255.255.0\n no shutdown",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface TenGigE0/0/0/2"
+    }
+  },
+  {
+    "content": "interface TenGigE0/0/0/3\n description Customer-B-Access\n vrf CUST-B\n ipv4 address 192.168.102.1 255.255.255.0\n no shutdown",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface TenGigE0/0/0/3"
+    }
+  },
+  {
+    "content": "interface TenGigE0/0/0/4.100\n description VLAN100-CUST-A\n encapsulation dot1q 100\n vrf CUST-A\n ipv4 address 10.10.100.1 255.255.255.0",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface TenGigE0/0/0/4.100"
+    }
+  },
+  {
+    "content": "interface TenGigE0/0/0/4.200\n description VLAN200-CUST-B\n encapsulation dot1q 200\n vrf CUST-B\n ipv4 address 10.10.200.1 255.255.255.0",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface TenGigE0/0/0/4.200"
+    }
+  },
+  {
+    "content": "router ospf 100\n router-id 10.255.255.1\n area 0\n  interface Loopback0\n   passive enable\n  interface TenGigE0/0/0/0\n   network point-to-point\n  interface TenGigE0/0/0/1\n   network point-to-point",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "router ospf 100"
+    }
+  },
+  {
+    "content": "router bgp 65001\n bgp router-id 10.255.255.1\n address-family ipv4 unicast\n  network 10.255.255.1/32\n neighbor 172.16.1.1\n  remote-as 65010\n  description ISP-PRIMARY\n  address-family ipv4 unicast\n   route-policy ISP-IN in\n   route-policy ISP-OUT out\n neighbor 172.16.2.1\n  remote-as 65020\n  description ISP-BACKUP\n  address-family ipv4 unicast\n   route-policy ISP-IN in\n   route-policy ISP-OUT out\n vrf CUST-A\n  rd 65001:100\n  address-family ipv4 unicast\n   network 192.168.101.0/24\n  neighbor 10.10.100.2\n   remote-as 65100\n   address-family ipv4 unicast\n vrf CUST-B\n  rd 65001:200\n  address-family ipv4 unicast\n   network 192.168.102.0/24",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "router bgp 65001"
+    }
+  },
+  {
+    "content": "route-policy ISP-IN\n pass",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "route-policy ISP-IN"
+    }
+  },
+  {
+    "content": "end-policy",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "route-policy ISP-OUT\n if destination in (10.255.255.0/24) then\n  pass\n else\n  drop\n endif",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "route-policy ISP-OUT"
+    }
+  },
+  {
+    "content": "end-policy",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "policy-map QOS-CUST\n class class-default\n  bandwidth percent 50",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "policy-map QOS-CUST"
+    }
+  },
+  {
+    "content": "interface TenGigE0/0/0/2\n service-policy output QOS-CUST",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface TenGigE0/0/0/2"
+    }
+  },
+  {
+    "content": "ntp\n server 192.168.100.10 prefer\n server 192.168.100.11",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "ntp"
+    }
+  },
+  {
+    "content": "logging 192.168.200.10 vrf MGMT severity informational\nlogging buffered 200000",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "snmp-server community PROD-RO RO\nsnmp-server location DC-Bangalore\nsnmp-server contact noc@example.net",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "telemetry model-driven\n destination-group PROMETHEUS\n  address-family ipv4 192.168.50.10 port 57000\n sensor-group INTERFACES\n  sensor-path Cisco-IOS-XR-ifmgr-oper:interface-properties/data-nodes/interface\n subscription IF-SUB\n  sensor-group-id INTERFACES sample-interval 30000\n  destination-id PROMETHEUS",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "telemetry model-driven"
+    }
+  },
+  {
+    "content": "ssh server v2\nssh timeout 60\nssh authentication-retries 3",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "control-plane\n management-plane\n  inband\n   interface all\n    allow ssh\n    allow snmp",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "control-plane"
+    }
+  },
+  {
+    "content": "commit",
+    "metadata": {
+      "device": "XR-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  }
+]

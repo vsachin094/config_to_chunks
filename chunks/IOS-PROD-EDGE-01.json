@@ -1,0 +1,308 @@
+[
+  {
+    "content": "hostname IOS-PROD-EDGE-01",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "ip domain-name example.net\nip domain-lookup",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "clock timezone IST 5 30\nservice timestamps debug datetime localtime\nservice timestamps log datetime localtime\nservice password-encryption",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "no ip http server\nno ip http secure-server",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "username admin privilege 15 secret 9 $9$examplehashedpassword",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "aaa new-model",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "aaa group server tacacs+ TACACS-SERVERS\n server 10.10.10.10\n server 10.10.10.11\n timeout 5",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "aaa group server tacacs+ TACACS-SERVERS"
+    }
+  },
+  {
+    "content": "aaa authentication login default group TACACS-SERVERS local\naaa authorization exec default group TACACS-SERVERS local\naaa authorization commands 15 default group TACACS-SERVERS local\naaa accounting exec default start-stop group TACACS-SERVERS",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "tacacs server TACACS1\n address ipv4 10.10.10.10\n key 7 070C285F4D06",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "tacacs server TACACS1"
+    }
+  },
+  {
+    "content": "tacacs server TACACS2\n address ipv4 10.10.10.11\n key 7 070C285F4D06",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "tacacs server TACACS2"
+    }
+  },
+  {
+    "content": "vrf definition MGMT\n address-family ipv4\n exit-address-family",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf definition MGMT"
+    }
+  },
+  {
+    "content": "vrf definition CUST-A\n rd 65001:100\n address-family ipv4\n exit-address-family",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf definition CUST-A"
+    }
+  },
+  {
+    "content": "vrf definition CUST-B\n rd 65001:200\n address-family ipv4\n exit-address-family",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf definition CUST-B"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/0\n description OOB Management\n vrf forwarding MGMT\n ip address 192.168.10.20 255.255.255.0\n no shutdown",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/0"
+    }
+  },
+  {
+    "content": "ip route vrf MGMT 0.0.0.0 0.0.0.0 192.168.10.1",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "interface Loopback0\n description Router-ID\n ip address 10.255.255.2 255.255.255.255",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Loopback0"
+    }
+  },
+  {
+    "content": "interface Loopback100\n description Services Loopback\n ip address 10.255.255.200 255.255.255.255",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Loopback100"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/1\n description ISP-PRIMARY\n mtu 9216\n ip address 172.16.11.2 255.255.255.252\n no shutdown",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/1"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/2\n description ISP-BACKUP\n mtu 9216\n ip address 172.16.12.2 255.255.255.252\n no shutdown",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/2"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/3\n description Customer-A-Access\n vrf forwarding CUST-A\n ip address 192.168.201.1 255.255.255.0\n no shutdown",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/3"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/4\n description Customer-B-Access\n vrf forwarding CUST-B\n ip address 192.168.202.1 255.255.255.0\n no shutdown",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/4"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/5.100\n description VLAN100-CUST-A\n encapsulation dot1Q 100\n vrf forwarding CUST-A\n ip address 10.20.100.1 255.255.255.0",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/5.100"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/5.200\n description VLAN200-CUST-B\n encapsulation dot1Q 200\n vrf forwarding CUST-B\n ip address 10.20.200.1 255.255.255.0",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/5.200"
+    }
+  },
+  {
+    "content": "router ospf 100\n router-id 10.255.255.2\n passive-interface default\n no passive-interface GigabitEthernet0/1\n no passive-interface GigabitEthernet0/2\n network 10.255.255.2 0.0.0.0 area 0\n network 172.16.11.0 0.0.0.3 area 0\n network 172.16.12.0 0.0.0.3 area 0",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "router ospf 100"
+    }
+  },
+  {
+    "content": "router bgp 65001\n bgp router-id 10.255.255.2\n bgp log-neighbor-changes\n neighbor 172.16.11.1 remote-as 65010\n neighbor 172.16.11.1 description ISP-PRIMARY\n neighbor 172.16.11.1 route-map ISP-IN in\n neighbor 172.16.11.1 route-map ISP-OUT out\n neighbor 172.16.12.1 remote-as 65020\n neighbor 172.16.12.1 description ISP-BACKUP\n neighbor 172.16.12.1 route-map ISP-IN in\n neighbor 172.16.12.1 route-map ISP-OUT out\n address-family ipv4\n  network 10.255.255.2 mask 255.255.255.255\n exit-address-family\n address-family ipv4 vrf CUST-A\n  neighbor 10.20.100.2 remote-as 65100\n  network 192.168.201.0 mask 255.255.255.0\n exit-address-family\n address-family ipv4 vrf CUST-B\n  network 192.168.202.0 mask 255.255.255.0\n exit-address-family",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "router bgp 65001"
+    }
+  },
+  {
+    "content": "route-map ISP-IN permit 10",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "route-map ISP-IN permit 10"
+    }
+  },
+  {
+    "content": "route-map ISP-OUT permit 10\n match ip address prefix-list EXPORT-PREFIX",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "route-map ISP-OUT permit 10"
+    }
+  },
+  {
+    "content": "ip prefix-list EXPORT-PREFIX seq 5 permit 10.255.255.0/24",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "ip prefix-list EXPORT-PREFIX seq 5 permit 10.255.255.0/24"
+    }
+  },
+  {
+    "content": "policy-map QOS-CUST\n class class-default\n  bandwidth percent 50",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "policy-map QOS-CUST"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/3\n service-policy output QOS-CUST",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/3"
+    }
+  },
+  {
+    "content": "ntp server 192.168.100.10 prefer\nntp server 192.168.100.11",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "logging host 192.168.200.20\nlogging trap informational\nlogging buffered 200000",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "snmp-server community PROD-RO RO\nsnmp-server location DC-Bangalore\nsnmp-server contact noc@example.net",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "ip flow-export destination 192.168.60.10 2055\nip flow-export version 9",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet0/1\n ip flow ingress\n ip flow egress",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet0/1"
+    }
+  },
+  {
+    "content": "ip ssh version 2\nip ssh time-out 60\nip ssh authentication-retries 3",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "line vty 0 4\n transport input ssh\n login authentication default",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "line vty 0 4"
+    }
+  },
+  {
+    "content": "control-plane\n service-policy input COPP-POLICY",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "control-plane"
+    }
+  },
+  {
+    "content": "policy-map COPP-POLICY\n class class-default\n  police 64000 conform-action transmit exceed-action drop",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "policy-map COPP-POLICY"
+    }
+  },
+  {
+    "content": "write memory",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  }
+]

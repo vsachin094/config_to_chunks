@@ -1,0 +1,247 @@
+[
+  {
+    "content": "hostname EOS-PROD-EDGE-01",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "ip domain-name example.net\nip name-server vrf MGMT 192.168.10.1",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "clock timezone IST 5 30",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "service routing protocols model multi-agent",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "management api http-commands\n no shutdown",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "management api http-commands"
+    }
+  },
+  {
+    "content": "username admin privilege 15 secret sha512 $6$examplehashedpassword",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "aaa authorization exec default local\naaa authentication login default local",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "tacacs-server host 10.10.10.10 key 7 070C285F4D06\ntacacs-server host 10.10.10.11 key 7 070C285F4D06\naaa authentication login default group tacacs+ local\naaa authorization exec default group tacacs+ local",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "vrf instance MGMT\n  vrf-target import 65001:1\n  vrf-target export 65001:1",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf instance MGMT"
+    }
+  },
+  {
+    "content": "vrf instance CUST-A\n  vrf-target import 65001:100\n  vrf-target export 65001:100",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf instance CUST-A"
+    }
+  },
+  {
+    "content": "vrf instance CUST-B\n  vrf-target import 65001:200\n  vrf-target export 65001:200",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "vrf instance CUST-B"
+    }
+  },
+  {
+    "content": "interface Management1\n description OOB Management\n vrf MGMT\n ip address 192.168.10.30/24\n no shutdown",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Management1"
+    }
+  },
+  {
+    "content": "ip route vrf MGMT 0.0.0.0/0 192.168.10.1",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "interface Loopback0\n description Router-ID\n ip address 10.255.255.3/32",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Loopback0"
+    }
+  },
+  {
+    "content": "interface Loopback100\n description Services Loopback\n ip address 10.255.255.300/32",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Loopback100"
+    }
+  },
+  {
+    "content": "interface Ethernet1\n description ISP-PRIMARY\n mtu 9214\n ip address 172.16.21.2/30\n no shutdown",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Ethernet1"
+    }
+  },
+  {
+    "content": "interface Ethernet2\n description ISP-BACKUP\n mtu 9214\n ip address 172.16.22.2/30\n no shutdown",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Ethernet2"
+    }
+  },
+  {
+    "content": "interface Ethernet3\n description Customer-A-Access\n vrf CUST-A\n ip address 192.168.301.1/24\n no shutdown",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Ethernet3"
+    }
+  },
+  {
+    "content": "interface Ethernet4\n description Customer-B-Access\n vrf CUST-B\n ip address 192.168.302.1/24\n no shutdown",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Ethernet4"
+    }
+  },
+  {
+    "content": "interface Ethernet5.100\n description VLAN100-CUST-A\n encapsulation dot1q vlan 100\n vrf CUST-A\n ip address 10.30.100.1/24",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Ethernet5.100"
+    }
+  },
+  {
+    "content": "interface Ethernet5.200\n description VLAN200-CUST-B\n encapsulation dot1q vlan 200\n vrf CUST-B\n ip address 10.30.200.1/24",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Ethernet5.200"
+    }
+  },
+  {
+    "content": "router ospf 100\n router-id 10.255.255.3\n passive-interface default\n no passive-interface Ethernet1\n no passive-interface Ethernet2\n network 10.255.255.3/32 area 0.0.0.0\n network 172.16.21.0/30 area 0.0.0.0\n network 172.16.22.0/30 area 0.0.0.0",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "router ospf 100"
+    }
+  },
+  {
+    "content": "router bgp 65001\n router-id 10.255.255.3\n no bgp default ipv4-unicast\n neighbor 172.16.21.1 remote-as 65010\n neighbor 172.16.21.1 description ISP-PRIMARY\n neighbor 172.16.22.1 remote-as 65020\n neighbor 172.16.22.1 description ISP-BACKUP\n address-family ipv4\n  neighbor 172.16.21.1 activate\n  neighbor 172.16.21.1 route-map ISP-IN in\n  neighbor 172.16.21.1 route-map ISP-OUT out\n  neighbor 172.16.22.1 activate\n  neighbor 172.16.22.1 route-map ISP-IN in\n  neighbor 172.16.22.1 route-map ISP-OUT out\n  network 10.255.255.3/32\n exit-address-family\n vrf CUST-A\n  rd 65001:100\n  address-family ipv4\n   neighbor 10.30.100.2 remote-as 65100\n   network 192.168.301.0/24\n exit-address-family\n vrf CUST-B\n  rd 65001:200\n  address-family ipv4\n   network 192.168.302.0/24\n exit-address-family",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "router bgp 65001"
+    }
+  },
+  {
+    "content": "ip prefix-list EXPORT-PREFIX seq 10 permit 10.255.255.0/24",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "ip prefix-list EXPORT-PREFIX seq 10 permit 10.255.255.0/24"
+    }
+  },
+  {
+    "content": "route-map ISP-IN permit 10",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "route-map ISP-IN permit 10"
+    }
+  },
+  {
+    "content": "route-map ISP-OUT permit 10\n match ip address prefix-list EXPORT-PREFIX",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "route-map ISP-OUT permit 10"
+    }
+  },
+  {
+    "content": "policy-map QOS-CUST\n class class-default\n  bandwidth percent 50",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "policy-map QOS-CUST"
+    }
+  },
+  {
+    "content": "interface Ethernet3\n service-policy output QOS-CUST",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "interface Ethernet3"
+    }
+  },
+  {
+    "content": "ntp server 192.168.100.10 prefer\nntp server 192.168.100.11",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "logging host 192.168.200.30\nlogging level all informational",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "snmp-server community PROD-RO ro\nsnmp-server location DC-Bangalore\nsnmp-server contact noc@example.net",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "global"
+    }
+  },
+  {
+    "content": "daemon TerminAttr\n exec /usr/bin/TerminAttr -cvaddr=192.168.50.10:9910 -cvauth=token,exampletoken -cvvrf=MGMT\n no shutdown",
+    "metadata": {
+      "device": "EOS-PROD-EDGE-01",
+      "chunk_type": "explicit",
+      "section": "daemon TerminAttr"
+    }
+  }
+]

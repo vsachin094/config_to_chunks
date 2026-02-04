@@ -1,0 +1,5 @@
+{
+  "XR-PROD-EDGE-01.cfg": "iosxr",
+  "IOS-PROD-EDGE-01.cfg": "ios",
+  "EOS-PROD-EDGE-01.cfg": "eos"
+}
