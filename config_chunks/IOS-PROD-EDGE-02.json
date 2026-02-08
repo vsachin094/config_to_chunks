@@ -1,0 +1,626 @@
+[
+  {
+    "content": "hostname Enterprise-Core-Router",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 0,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|0"
+    }
+  },
+  {
+    "content": "enable secret 5 $1$abc$hashedenablepassword",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 1,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|1"
+    }
+  },
+  {
+    "content": "username admin privilege 15 secret 5 $1$def$hashedadminpass",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 2,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|2"
+    }
+  },
+  {
+    "content": "no service pad\nservice tcp-keepalives-in\nservice tcp-keepalives-out\nip domain-name example.com\ncrypto key generate rsa modulus 2048",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 3,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|3"
+    }
+  },
+  {
+    "content": "no ip source-route\nno ip gratuitous-arps\nip icmp error-interval 0 0 50\nno ip identd\nipv6 io icmp redirect\nno service dhcp",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 4,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|4"
+    }
+  },
+  {
+    "content": "logging buffered 4096000 debugging\nlogging console critical\nlogging trap debugging\nlogging source-interface Loopback0\nlogging host 192.168.1.100",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 5,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|5"
+    }
+  },
+  {
+    "content": "snmp-server group SNMPGroup v3 priv\nsnmp-server user MonitorUser SNMPGroup v3 auth sha AuthPass123 priv aes 128 PrivPass123\nsnmp-server host 192.168.1.100 version 3 priv MonitorUser\nsnmp-server enable traps bgp\nsnmp-server enable traps ospf",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 6,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|6"
+    }
+  },
+  {
+    "content": "ntp server 192.168.30.10 prefer\nntp server 192.168.30.11\nntp authenticate\nntp authentication-key 1 md5 NtpKey123\nntp trusted-key 1",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 7,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|7"
+    }
+  },
+  {
+    "content": "banner motd ^C\n*** WARNING: Unauthorized access strictly prohibited! ***\nAll activities logged and monitored.\n^C\nbanner login ^C\nAuthorized access only. Disconnect IMMEDIATELY if unauthorized.\n^C",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 8,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|8"
+    }
+  },
+  {
+    "content": "aaa new-model\naaa authentication login default local\naaa authorization exec default local\naaa authorization commands 15 default local",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 9,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|9"
+    }
+  },
+  {
+    "content": "line con 0\n login local\n transport input none",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "line con 0",
+      "os_type": "ios",
+      "chunk_index": 10,
+      "section_type": "line",
+      "chunk_id": "IOS-PROD-EDGE-02|line con 0|10"
+    }
+  },
+  {
+    "content": "line vty 0 4\n login local\n transport input ssh\n access-class VTY-ACL in",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "line vty 0 4",
+      "os_type": "ios",
+      "chunk_index": 11,
+      "section_type": "line",
+      "chunk_id": "IOS-PROD-EDGE-02|line vty 0 4|11"
+    }
+  },
+  {
+    "content": "vlan 10\n name Data",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "vlan 10",
+      "os_type": "ios",
+      "chunk_index": 12,
+      "section_type": "vlan",
+      "chunk_id": "IOS-PROD-EDGE-02|vlan 10|12"
+    }
+  },
+  {
+    "content": "vlan 20\n name Voice",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "vlan 20",
+      "os_type": "ios",
+      "chunk_index": 13,
+      "section_type": "vlan",
+      "chunk_id": "IOS-PROD-EDGE-02|vlan 20|13"
+    }
+  },
+  {
+    "content": "vlan 30\n name Management",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "vlan 30",
+      "os_type": "ios",
+      "chunk_index": 14,
+      "section_type": "vlan",
+      "chunk_id": "IOS-PROD-EDGE-02|vlan 30|14"
+    }
+  },
+  {
+    "content": "vlan 40\n name Guest",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "vlan 40",
+      "os_type": "ios",
+      "chunk_index": 15,
+      "section_type": "vlan",
+      "chunk_id": "IOS-PROD-EDGE-02|vlan 40|15"
+    }
+  },
+  {
+    "content": "interface vlan 10\n ip address 10.10.10.1 255.255.255.0\n ip ospf authentication message-digest\n ip ospf message-digest-key 1 md5 OspfKey123\n standby 1 ip 10.10.10.254\n standby 1 priority 110\n standby 1 preempt\n standby 1 authentication md5 HsrpKey123\n ip access-group VLAN10-ACL in",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface vlan 10",
+      "os_type": "ios",
+      "chunk_index": 16,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface vlan 10|16"
+    }
+  },
+  {
+    "content": "interface vlan 20\n ip address 10.20.20.1 255.255.255.0",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface vlan 20",
+      "os_type": "ios",
+      "chunk_index": 17,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface vlan 20|17"
+    }
+  },
+  {
+    "content": "interface vlan 30\n ip address 192.168.30.1 255.255.255.0",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface vlan 30",
+      "os_type": "ios",
+      "chunk_index": 18,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface vlan 30|18"
+    }
+  },
+  {
+    "content": "interface vlan 40\n ip address 172.16.40.1 255.255.255.0\n ip access-group Guest-ACL in",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface vlan 40",
+      "os_type": "ios",
+      "chunk_index": 19,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface vlan 40|19"
+    }
+  },
+  {
+    "content": "interface Loopback0\n ip address 1.1.1.1 255.255.255.255",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface Loopback0",
+      "os_type": "ios",
+      "chunk_index": 20,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface Loopback0|20"
+    }
+  },
+  {
+    "content": "interface Port-channel1\n description Trunk to Access-SW1\n switchport mode trunk\n switchport trunk allowed vlan 10,20,30\n switchport trunk native vlan 30\n spanning-tree portfast trunk\n service-policy output ENTERPRISE-QOS",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface Port-channel1",
+      "os_type": "ios",
+      "chunk_index": 21,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface Port-channel1|21"
+    }
+  },
+  {
+    "content": "interface range GigabitEthernet0/1 - 4\n switchport mode trunk\n switchport trunk allowed vlan 10,20,30\n switchport trunk native vlan 30\n channel-group 1 mode active",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface range GigabitEthernet0/1 - 4",
+      "os_type": "ios",
+      "chunk_index": 22,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface range GigabitEthernet0/1 - 4|22"
+    }
+  },
+  {
+    "content": "interface Port-channel2\n description Trunk to Dist-SW1\n switchport mode trunk\n switchport trunk allowed vlan 10,20,40\n switchport trunk native vlan 30\n ip access-group TRUNK-ACL in\n service-policy output ENTERPRISE-QOS",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface Port-channel2",
+      "os_type": "ios",
+      "chunk_index": 23,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface Port-channel2|23"
+    }
+  },
+  {
+    "content": "interface range GigabitEthernet0/5 - 8\n switchport mode trunk\n switchport trunk allowed vlan 10,20,40\n switchport trunk native vlan 30\n channel-group 2 mode active",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface range GigabitEthernet0/5 - 8",
+      "os_type": "ios",
+      "chunk_index": 24,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface range GigabitEthernet0/5 - 8|24"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet1/0\n description WAN-Uplink1\n ip address 203.0.113.1 255.255.255.252\n ip access-group WAN-IN-ACL in\n ip access-group WAN-OUT-ACL out\n ip flow ingress\n ip flow egress\n load-interval 30\n no shutdown",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet1/0",
+      "os_type": "ios",
+      "chunk_index": 25,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface GigabitEthernet1/0|25"
+    }
+  },
+  {
+    "content": "interface GigabitEthernet1/1\n description WAN-Uplink2\n ip address 198.51.100.1 255.255.255.252\n ip access-group WAN-IN-ACL in\n ip access-group WAN-OUT-ACL out\n ip flow ingress\n load-interval 30\n no shutdown",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface GigabitEthernet1/1",
+      "os_type": "ios",
+      "chunk_index": 26,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface GigabitEthernet1/1|26"
+    }
+  },
+  {
+    "content": "interface range TenGigabitEthernet0/1 - 2\n description High-Speed to Core\n ip address 172.16.0.1 255.255.255.254\n negotiation auto\n mtu 9216\n service-policy output ENTERPRISE-QOS\n no shutdown",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "interface range TenGigabitEthernet0/1 - 2",
+      "os_type": "ios",
+      "chunk_index": 27,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-02|interface range TenGigabitEthernet0/1 - 2|27"
+    }
+  },
+  {
+    "content": "spanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\nspanning-tree extend system-id\nspanning-tree vlan 10,20,30,40 priority 4096",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 28,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|28"
+    }
+  },
+  {
+    "content": "ip access-list extended VLAN10-ACL\n remark Protect Data VLAN\n deny ip 10.10.20.0 0.0.0.255 any log\n permit ip any any",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list extended VLAN10-ACL",
+      "os_type": "ios",
+      "chunk_index": 29,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list extended VLAN10-ACL|29"
+    }
+  },
+  {
+    "content": "ip access-list extended Guest-ACL\n remark Guest Internet Only\n permit tcp 172.16.40.0 0.0.0.255 any eq www\n permit tcp 172.16.40.0 0.0.0.255 any eq 443\n deny ip any any log",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list extended Guest-ACL",
+      "os_type": "ios",
+      "chunk_index": 30,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list extended Guest-ACL|30"
+    }
+  },
+  {
+    "content": "ip access-list extended TRUNK-ACL\n remark Trunk protection\n permit ip 10.0.0.0 0.255.255.255 any\n deny ip any any log-input",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list extended TRUNK-ACL",
+      "os_type": "ios",
+      "chunk_index": 31,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list extended TRUNK-ACL|31"
+    }
+  },
+  {
+    "content": "ip access-list extended WAN-IN-ACL\n remark WAN Inbound\n permit tcp any any eq 443\n permit icmp any any echo-reply\n deny ip any any log",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list extended WAN-IN-ACL",
+      "os_type": "ios",
+      "chunk_index": 32,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list extended WAN-IN-ACL|32"
+    }
+  },
+  {
+    "content": "ip access-list extended WAN-OUT-ACL\n remark WAN Outbound\n permit ip any any",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list extended WAN-OUT-ACL",
+      "os_type": "ios",
+      "chunk_index": 33,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list extended WAN-OUT-ACL|33"
+    }
+  },
+  {
+    "content": "ip access-list standard VTY-ACL\n remark VTY Management Access\n permit 192.168.30.0 0.0.0.255\n deny any log",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list standard VTY-ACL",
+      "os_type": "ios",
+      "chunk_index": 34,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list standard VTY-ACL|34"
+    }
+  },
+  {
+    "content": "ip access-list extended INFRA-ACL\n permit icmp host 192.168.30.10 any echo\n permit tcp host 192.168.30.10 any eq 22\n deny ip any any log-input",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list extended INFRA-ACL",
+      "os_type": "ios",
+      "chunk_index": 35,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list extended INFRA-ACL|35"
+    }
+  },
+  {
+    "content": "ip access-list extended CRITICAL\n permit tcp any any eq bgp\n permit ospf any any",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list extended CRITICAL",
+      "os_type": "ios",
+      "chunk_index": 36,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list extended CRITICAL|36"
+    }
+  },
+  {
+    "content": "router ospf 1\n router-id 1.1.1.1\n area 0 authentication message-digest\n network 10.10.10.0 0.0.0.255 area 0\n network 10.20.20.0 0.0.0.255 area 0\n network 192.168.30.0 0.0.0.255 area 0\n network 172.16.40.0 0.0.0.255 area 0\n max-lsa 12000\n max-metric router-lsa on-startup 3000",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "router ospf 1",
+      "os_type": "ios",
+      "chunk_index": 37,
+      "section_type": "router",
+      "chunk_id": "IOS-PROD-EDGE-02|router ospf 1|37"
+    }
+  },
+  {
+    "content": "router bgp 65001\n bgp router-id 1.1.1.1\n bgp log-neighbor-changes\n neighbor 203.0.113.2 remote-as 65002\n neighbor 203.0.113.2 update-source GigabitEthernet1/0\n neighbor 203.0.113.2 password Bgppass123\n address-family ipv4\n  network 10.0.0.0 mask 255.0.0.0\n  neighbor 203.0.113.2 activate\n  neighbor 203.0.113.2 soft-reconfiguration inbound\n exit-address-family",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "router bgp 65001",
+      "os_type": "ios",
+      "chunk_index": 38,
+      "section_type": "router",
+      "chunk_id": "IOS-PROD-EDGE-02|router bgp 65001|38"
+    }
+  },
+  {
+    "content": "class-map match-any VOICE\n match dscp ef",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "class-map match-any VOICE",
+      "os_type": "ios",
+      "chunk_index": 39,
+      "section_type": "class-map",
+      "chunk_id": "IOS-PROD-EDGE-02|class-map match-any VOICE|39"
+    }
+  },
+  {
+    "content": "class-map match-any VIDEO\n match dscp af41",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "class-map match-any VIDEO",
+      "os_type": "ios",
+      "chunk_index": 40,
+      "section_type": "class-map",
+      "chunk_id": "IOS-PROD-EDGE-02|class-map match-any VIDEO|40"
+    }
+  },
+  {
+    "content": "class-map match-any COPP-CRITICAL\n match access-group name CRITICAL",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "class-map match-any COPP-CRITICAL",
+      "os_type": "ios",
+      "chunk_index": 41,
+      "section_type": "class-map",
+      "chunk_id": "IOS-PROD-EDGE-02|class-map match-any COPP-CRITICAL|41"
+    }
+  },
+  {
+    "content": "class-map match-any COPP-SSH\n match access-group name SSH-ACL",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "class-map match-any COPP-SSH",
+      "os_type": "ios",
+      "chunk_index": 42,
+      "section_type": "class-map",
+      "chunk_id": "IOS-PROD-EDGE-02|class-map match-any COPP-SSH|42"
+    }
+  },
+  {
+    "content": "policy-map ENTERPRISE-QOS\n class VOICE\n  priority percent 30\n class VIDEO\n  bandwidth percent 20\n  random-detect dscp af41\n class class-default\n  bandwidth percent 50\n  fair-queue",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "policy-map ENTERPRISE-QOS",
+      "os_type": "ios",
+      "chunk_index": 43,
+      "section_type": "policy-map",
+      "chunk_id": "IOS-PROD-EDGE-02|policy-map ENTERPRISE-QOS|43"
+    }
+  },
+  {
+    "content": "policy-map COPP-POLICY\n class COPP-CRITICAL\n  police rate 100 pps burst 100 packets conform-action transmit exceed-action drop\n class COPP-SSH\n  police rate 50 pps burst 50 packets conform-action transmit exceed-action drop\n class class-default\n  police rate 200 pps burst 200 packets conform-action transmit exceed-action drop",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "policy-map COPP-POLICY",
+      "os_type": "ios",
+      "chunk_index": 44,
+      "section_type": "policy-map",
+      "chunk_id": "IOS-PROD-EDGE-02|policy-map COPP-POLICY|44"
+    }
+  },
+  {
+    "content": "ip access-list extended SSH-ACL\n permit tcp 192.168.30.0 0.0.0.255 any eq 22",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip access-list extended SSH-ACL",
+      "os_type": "ios",
+      "chunk_index": 45,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip access-list extended SSH-ACL|45"
+    }
+  },
+  {
+    "content": "control-plane host\n management-interface GigabitEthernet1/0 allow ssh snmp https\n management-interface vlan 30 allow ssh snmp https",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "control-plane host",
+      "os_type": "ios",
+      "chunk_index": 46,
+      "section_type": "control-plane",
+      "chunk_id": "IOS-PROD-EDGE-02|control-plane host|46"
+    }
+  },
+  {
+    "content": "control-plane\n service-policy input COPP-POLICY",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "control-plane",
+      "os_type": "ios",
+      "chunk_index": 47,
+      "section_type": "control-plane",
+      "chunk_id": "IOS-PROD-EDGE-02|control-plane|47"
+    }
+  },
+  {
+    "content": "ip flow-export version 9\nip flow-export destination 192.168.1.100 9996\nip flow-cache timeout active 15",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 48,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-02|global|48"
+    }
+  },
+  {
+    "content": "ip sla 1\n icmp-echo 8.8.8.8 source-interface Loopback0\n frequency 10",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip sla 1",
+      "os_type": "ios",
+      "chunk_index": 49,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip sla 1|49"
+    }
+  },
+  {
+    "content": "ip sla schedule 1 life forever start-time now",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "ip sla schedule 1 life forever start-time now",
+      "os_type": "ios",
+      "chunk_index": 50,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-02|ip sla schedule 1 life forever start-time now|50"
+    }
+  },
+  {
+    "content": "event manager applet CPU_HIGH\n event syslog pattern \"CPU.*utilization.*over 80\"\n action 1.0 syslog msg \"High CPU detected - Alert Admin\"\n action 2.0 cli command \"enable\"\n action 3.0 cli command \"show processes cpu sorted | redirect bootflash:cpu_high.txt\"\n action 4.0 cli command \"copy bootflash:cpu_high.txt tftp://192.168.30.10/\"",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "event manager applet CPU_HIGH",
+      "os_type": "ios",
+      "chunk_index": 51,
+      "section_type": "event",
+      "chunk_id": "IOS-PROD-EDGE-02|event manager applet CPU_HIGH|51"
+    }
+  },
+  {
+    "content": "archive\n log config\n  notify syslog\n path flash:configs/${SYSDATE}-config\n write-memory\n time-period 1440",
+    "metadata": {
+      "device": "IOS-PROD-EDGE-02",
+      "chunk_type": "explicit",
+      "section": "archive",
+      "os_type": "ios",
+      "chunk_index": 52,
+      "section_type": "archive",
+      "chunk_id": "IOS-PROD-EDGE-02|archive|52"
+    }
+  }
+]

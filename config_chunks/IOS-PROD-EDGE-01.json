@@ -3,42 +3,66 @@
     "content": "hostname IOS-PROD-EDGE-01",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 0,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|0"
     }
   },
   {
     "content": "ip domain-name example.net\nip domain-lookup",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 1,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|1"
     }
   },
   {
     "content": "clock timezone IST 5 30\nservice timestamps debug datetime localtime\nservice timestamps log datetime localtime\nservice password-encryption",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 2,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|2"
     }
   },
   {
     "content": "no ip http server\nno ip http secure-server",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 3,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|3"
     }
   },
   {
     "content": "username admin privilege 15 secret 9 $9$examplehashedpassword",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 4,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|4"
     }
   },
   {
     "content": "aaa new-model",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 5,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|5"
     }
   },
   {
@@ -46,14 +70,22 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "aaa group server tacacs+ TACACS-SERVERS"
+      "section": "aaa group server tacacs+ TACACS-SERVERS",
+      "os_type": "ios",
+      "chunk_index": 6,
+      "section_type": "aaa",
+      "chunk_id": "IOS-PROD-EDGE-01|aaa group server tacacs+ TACACS-SERVERS|6"
     }
   },
   {
     "content": "aaa authentication login default group TACACS-SERVERS local\naaa authorization exec default group TACACS-SERVERS local\naaa authorization commands 15 default group TACACS-SERVERS local\naaa accounting exec default start-stop group TACACS-SERVERS",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 7,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|7"
     }
   },
   {
@@ -61,7 +93,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "tacacs server TACACS1"
+      "section": "tacacs server TACACS1",
+      "os_type": "ios",
+      "chunk_index": 8,
+      "section_type": "tacacs",
+      "chunk_id": "IOS-PROD-EDGE-01|tacacs server TACACS1|8"
     }
   },
   {
@@ -69,7 +105,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "tacacs server TACACS2"
+      "section": "tacacs server TACACS2",
+      "os_type": "ios",
+      "chunk_index": 9,
+      "section_type": "tacacs",
+      "chunk_id": "IOS-PROD-EDGE-01|tacacs server TACACS2|9"
     }
   },
   {
@@ -77,7 +117,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf definition MGMT"
+      "section": "vrf definition MGMT",
+      "os_type": "ios",
+      "chunk_index": 10,
+      "section_type": "vrf",
+      "chunk_id": "IOS-PROD-EDGE-01|vrf definition MGMT|10"
     }
   },
   {
@@ -85,7 +129,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf definition CUST-A"
+      "section": "vrf definition CUST-A",
+      "os_type": "ios",
+      "chunk_index": 11,
+      "section_type": "vrf",
+      "chunk_id": "IOS-PROD-EDGE-01|vrf definition CUST-A|11"
     }
   },
   {
@@ -93,7 +141,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf definition CUST-B"
+      "section": "vrf definition CUST-B",
+      "os_type": "ios",
+      "chunk_index": 12,
+      "section_type": "vrf",
+      "chunk_id": "IOS-PROD-EDGE-01|vrf definition CUST-B|12"
     }
   },
   {
@@ -101,14 +153,22 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/0"
+      "section": "interface GigabitEthernet0/0",
+      "os_type": "ios",
+      "chunk_index": 13,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/0|13"
     }
   },
   {
     "content": "ip route vrf MGMT 0.0.0.0 0.0.0.0 192.168.10.1",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 14,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|14"
     }
   },
   {
@@ -116,7 +176,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Loopback0"
+      "section": "interface Loopback0",
+      "os_type": "ios",
+      "chunk_index": 15,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface Loopback0|15"
     }
   },
   {
@@ -124,7 +188,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Loopback100"
+      "section": "interface Loopback100",
+      "os_type": "ios",
+      "chunk_index": 16,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface Loopback100|16"
     }
   },
   {
@@ -132,7 +200,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/1"
+      "section": "interface GigabitEthernet0/1",
+      "os_type": "ios",
+      "chunk_index": 17,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/1|17"
     }
   },
   {
@@ -140,7 +212,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/2"
+      "section": "interface GigabitEthernet0/2",
+      "os_type": "ios",
+      "chunk_index": 18,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/2|18"
     }
   },
   {
@@ -148,7 +224,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/3"
+      "section": "interface GigabitEthernet0/3",
+      "os_type": "ios",
+      "chunk_index": 19,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/3|19"
     }
   },
   {
@@ -156,7 +236,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/4"
+      "section": "interface GigabitEthernet0/4",
+      "os_type": "ios",
+      "chunk_index": 20,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/4|20"
     }
   },
   {
@@ -164,7 +248,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/5.100"
+      "section": "interface GigabitEthernet0/5.100",
+      "os_type": "ios",
+      "chunk_index": 21,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/5.100|21"
     }
   },
   {
@@ -172,7 +260,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/5.200"
+      "section": "interface GigabitEthernet0/5.200",
+      "os_type": "ios",
+      "chunk_index": 22,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/5.200|22"
     }
   },
   {
@@ -180,7 +272,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "router ospf 100"
+      "section": "router ospf 100",
+      "os_type": "ios",
+      "chunk_index": 23,
+      "section_type": "router",
+      "chunk_id": "IOS-PROD-EDGE-01|router ospf 100|23"
     }
   },
   {
@@ -188,7 +284,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "router bgp 65001"
+      "section": "router bgp 65001",
+      "os_type": "ios",
+      "chunk_index": 24,
+      "section_type": "router",
+      "chunk_id": "IOS-PROD-EDGE-01|router bgp 65001|24"
     }
   },
   {
@@ -196,7 +296,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "route-map ISP-IN permit 10"
+      "section": "route-map ISP-IN permit 10",
+      "os_type": "ios",
+      "chunk_index": 25,
+      "section_type": "route-map",
+      "chunk_id": "IOS-PROD-EDGE-01|route-map ISP-IN permit 10|25"
     }
   },
   {
@@ -204,7 +308,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "route-map ISP-OUT permit 10"
+      "section": "route-map ISP-OUT permit 10",
+      "os_type": "ios",
+      "chunk_index": 26,
+      "section_type": "route-map",
+      "chunk_id": "IOS-PROD-EDGE-01|route-map ISP-OUT permit 10|26"
     }
   },
   {
@@ -212,7 +320,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "ip prefix-list EXPORT-PREFIX seq 5 permit 10.255.255.0/24"
+      "section": "ip prefix-list EXPORT-PREFIX seq 5 permit 10.255.255.0/24",
+      "os_type": "ios",
+      "chunk_index": 27,
+      "section_type": "ip",
+      "chunk_id": "IOS-PROD-EDGE-01|ip prefix-list EXPORT-PREFIX seq 5 permit 10.255.255.0/24|27"
     }
   },
   {
@@ -220,7 +332,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "policy-map QOS-CUST"
+      "section": "policy-map QOS-CUST",
+      "os_type": "ios",
+      "chunk_index": 28,
+      "section_type": "policy-map",
+      "chunk_id": "IOS-PROD-EDGE-01|policy-map QOS-CUST|28"
     }
   },
   {
@@ -228,35 +344,55 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/3"
+      "section": "interface GigabitEthernet0/3",
+      "os_type": "ios",
+      "chunk_index": 29,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/3|29"
     }
   },
   {
     "content": "ntp server 192.168.100.10 prefer\nntp server 192.168.100.11",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 30,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|30"
     }
   },
   {
     "content": "logging host 192.168.200.20\nlogging trap informational\nlogging buffered 200000",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 31,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|31"
     }
   },
   {
     "content": "snmp-server community PROD-RO RO\nsnmp-server location DC-Bangalore\nsnmp-server contact noc@example.net",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 32,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|32"
     }
   },
   {
     "content": "ip flow-export destination 192.168.60.10 2055\nip flow-export version 9",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 33,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|33"
     }
   },
   {
@@ -264,14 +400,22 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface GigabitEthernet0/1"
+      "section": "interface GigabitEthernet0/1",
+      "os_type": "ios",
+      "chunk_index": 34,
+      "section_type": "interface",
+      "chunk_id": "IOS-PROD-EDGE-01|interface GigabitEthernet0/1|34"
     }
   },
   {
     "content": "ip ssh version 2\nip ssh time-out 60\nip ssh authentication-retries 3",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 35,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|35"
     }
   },
   {
@@ -279,7 +423,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "line vty 0 4"
+      "section": "line vty 0 4",
+      "os_type": "ios",
+      "chunk_index": 36,
+      "section_type": "line",
+      "chunk_id": "IOS-PROD-EDGE-01|line vty 0 4|36"
     }
   },
   {
@@ -287,7 +435,11 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "control-plane"
+      "section": "control-plane",
+      "os_type": "ios",
+      "chunk_index": 37,
+      "section_type": "control-plane",
+      "chunk_id": "IOS-PROD-EDGE-01|control-plane|37"
     }
   },
   {
@@ -295,14 +447,22 @@
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "policy-map COPP-POLICY"
+      "section": "policy-map COPP-POLICY",
+      "os_type": "ios",
+      "chunk_index": 38,
+      "section_type": "policy-map",
+      "chunk_id": "IOS-PROD-EDGE-01|policy-map COPP-POLICY|38"
     }
   },
   {
     "content": "write memory",
     "metadata": {
       "device": "IOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "ios",
+      "chunk_index": 39,
+      "section_type": "global",
+      "chunk_id": "IOS-PROD-EDGE-01|global|39"
     }
   }
 ]

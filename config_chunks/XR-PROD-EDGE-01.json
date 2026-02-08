@@ -3,14 +3,22 @@
     "content": "hostname XR-PROD-EDGE-01",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 0,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|0"
     }
   },
   {
     "content": "domain name example.net\ndomain lookup disable\nclock timezone IST 5 30\nservice timestamps log datetime localtime\nservice password-encryption",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 1,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|1"
     }
   },
   {
@@ -18,7 +26,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "username admin"
+      "section": "username admin",
+      "os_type": "iosxr",
+      "chunk_index": 2,
+      "section_type": "username",
+      "chunk_id": "XR-PROD-EDGE-01|username admin|2"
     }
   },
   {
@@ -26,14 +38,22 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "aaa group server tacacs+ TACACS-SERVERS"
+      "section": "aaa group server tacacs+ TACACS-SERVERS",
+      "os_type": "iosxr",
+      "chunk_index": 3,
+      "section_type": "aaa",
+      "chunk_id": "XR-PROD-EDGE-01|aaa group server tacacs+ TACACS-SERVERS|3"
     }
   },
   {
     "content": "aaa authentication login default group TACACS-SERVERS local\naaa authorization exec default group TACACS-SERVERS local\naaa authorization commands default group TACACS-SERVERS local\naaa accounting exec default start-stop group TACACS-SERVERS",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 4,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|4"
     }
   },
   {
@@ -41,7 +61,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf MGMT"
+      "section": "vrf MGMT",
+      "os_type": "iosxr",
+      "chunk_index": 5,
+      "section_type": "vrf",
+      "chunk_id": "XR-PROD-EDGE-01|vrf MGMT|5"
     }
   },
   {
@@ -49,7 +73,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf CUST-A"
+      "section": "vrf CUST-A",
+      "os_type": "iosxr",
+      "chunk_index": 6,
+      "section_type": "vrf",
+      "chunk_id": "XR-PROD-EDGE-01|vrf CUST-A|6"
     }
   },
   {
@@ -57,7 +85,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf CUST-B"
+      "section": "vrf CUST-B",
+      "os_type": "iosxr",
+      "chunk_index": 7,
+      "section_type": "vrf",
+      "chunk_id": "XR-PROD-EDGE-01|vrf CUST-B|7"
     }
   },
   {
@@ -65,7 +97,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface MgmtEth0/RP0/CPU0/0"
+      "section": "interface MgmtEth0/RP0/CPU0/0",
+      "os_type": "iosxr",
+      "chunk_index": 8,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface MgmtEth0/RP0/CPU0/0|8"
     }
   },
   {
@@ -73,7 +109,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Loopback0"
+      "section": "interface Loopback0",
+      "os_type": "iosxr",
+      "chunk_index": 9,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface Loopback0|9"
     }
   },
   {
@@ -81,7 +121,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Loopback100"
+      "section": "interface Loopback100",
+      "os_type": "iosxr",
+      "chunk_index": 10,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface Loopback100|10"
     }
   },
   {
@@ -89,7 +133,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface TenGigE0/0/0/0"
+      "section": "interface TenGigE0/0/0/0",
+      "os_type": "iosxr",
+      "chunk_index": 11,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface TenGigE0/0/0/0|11"
     }
   },
   {
@@ -97,7 +145,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface TenGigE0/0/0/1"
+      "section": "interface TenGigE0/0/0/1",
+      "os_type": "iosxr",
+      "chunk_index": 12,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface TenGigE0/0/0/1|12"
     }
   },
   {
@@ -105,7 +157,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface TenGigE0/0/0/2"
+      "section": "interface TenGigE0/0/0/2",
+      "os_type": "iosxr",
+      "chunk_index": 13,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface TenGigE0/0/0/2|13"
     }
   },
   {
@@ -113,7 +169,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface TenGigE0/0/0/3"
+      "section": "interface TenGigE0/0/0/3",
+      "os_type": "iosxr",
+      "chunk_index": 14,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface TenGigE0/0/0/3|14"
     }
   },
   {
@@ -121,7 +181,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface TenGigE0/0/0/4.100"
+      "section": "interface TenGigE0/0/0/4.100",
+      "os_type": "iosxr",
+      "chunk_index": 15,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface TenGigE0/0/0/4.100|15"
     }
   },
   {
@@ -129,7 +193,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface TenGigE0/0/0/4.200"
+      "section": "interface TenGigE0/0/0/4.200",
+      "os_type": "iosxr",
+      "chunk_index": 16,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface TenGigE0/0/0/4.200|16"
     }
   },
   {
@@ -137,7 +205,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "router ospf 100"
+      "section": "router ospf 100",
+      "os_type": "iosxr",
+      "chunk_index": 17,
+      "section_type": "router",
+      "chunk_id": "XR-PROD-EDGE-01|router ospf 100|17"
     }
   },
   {
@@ -145,7 +217,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "router bgp 65001"
+      "section": "router bgp 65001",
+      "os_type": "iosxr",
+      "chunk_index": 18,
+      "section_type": "router",
+      "chunk_id": "XR-PROD-EDGE-01|router bgp 65001|18"
     }
   },
   {
@@ -153,14 +229,22 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "route-policy ISP-IN"
+      "section": "route-policy ISP-IN",
+      "os_type": "iosxr",
+      "chunk_index": 19,
+      "section_type": "route-policy",
+      "chunk_id": "XR-PROD-EDGE-01|route-policy ISP-IN|19"
     }
   },
   {
     "content": "end-policy",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 20,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|20"
     }
   },
   {
@@ -168,14 +252,22 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "route-policy ISP-OUT"
+      "section": "route-policy ISP-OUT",
+      "os_type": "iosxr",
+      "chunk_index": 21,
+      "section_type": "route-policy",
+      "chunk_id": "XR-PROD-EDGE-01|route-policy ISP-OUT|21"
     }
   },
   {
     "content": "end-policy",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 22,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|22"
     }
   },
   {
@@ -183,7 +275,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "policy-map QOS-CUST"
+      "section": "policy-map QOS-CUST",
+      "os_type": "iosxr",
+      "chunk_index": 23,
+      "section_type": "policy-map",
+      "chunk_id": "XR-PROD-EDGE-01|policy-map QOS-CUST|23"
     }
   },
   {
@@ -191,7 +287,11 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface TenGigE0/0/0/2"
+      "section": "interface TenGigE0/0/0/2",
+      "os_type": "iosxr",
+      "chunk_index": 24,
+      "section_type": "interface",
+      "chunk_id": "XR-PROD-EDGE-01|interface TenGigE0/0/0/2|24"
     }
   },
   {
@@ -199,21 +299,33 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "ntp"
+      "section": "ntp",
+      "os_type": "iosxr",
+      "chunk_index": 25,
+      "section_type": "ntp",
+      "chunk_id": "XR-PROD-EDGE-01|ntp|25"
     }
   },
   {
     "content": "logging 192.168.200.10 vrf MGMT severity informational\nlogging buffered 200000",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 26,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|26"
     }
   },
   {
     "content": "snmp-server community PROD-RO RO\nsnmp-server location DC-Bangalore\nsnmp-server contact noc@example.net",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 27,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|27"
     }
   },
   {
@@ -221,14 +333,22 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "telemetry model-driven"
+      "section": "telemetry model-driven",
+      "os_type": "iosxr",
+      "chunk_index": 28,
+      "section_type": "telemetry",
+      "chunk_id": "XR-PROD-EDGE-01|telemetry model-driven|28"
     }
   },
   {
     "content": "ssh server v2\nssh timeout 60\nssh authentication-retries 3",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 29,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|29"
     }
   },
   {
@@ -236,14 +356,22 @@
     "metadata": {
       "device": "XR-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "control-plane"
+      "section": "control-plane",
+      "os_type": "iosxr",
+      "chunk_index": 30,
+      "section_type": "control-plane",
+      "chunk_id": "XR-PROD-EDGE-01|control-plane|30"
     }
   },
   {
     "content": "commit",
     "metadata": {
       "device": "XR-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "iosxr",
+      "chunk_index": 31,
+      "section_type": "global",
+      "chunk_id": "XR-PROD-EDGE-01|global|31"
     }
   }
 ]

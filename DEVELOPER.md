@@ -6,19 +6,21 @@ This doc explains the project structure, data model, and how to extend it.
 
 ```
 netconfig/
-  __main__.py          # module entrypoint -> cli.py
-  cli.py               # main CLI and orchestration
-  chunk_configs.py     # read configs and write chunk JSON
-  chunker.py           # chunking engine
-  chunk_utils.py       # shared helpers (metadata, embeddings)
-  merge_chunks.py      # merge chunk JSON back into configs
+  netconfig_runner.py  # main CLI and orchestration
+  core/
+    config_prep.py     # read configs + resolve OS
+    chunk_builder.py   # chunking engine + metadata + write JSON
   parsers/             # OS-specific patterns
   utils/
-    mongo_writer.py    # optional Mongo writer
-    faiss_index.py     # optional FAISS builder
+    mongo_writer.py    # MongoStore class (write/update/delete)
+    faiss_index.py     # FaissIndex class (build/load/save/search)
+    embeddings.py      # embedding helpers (no chunk logic)
+test_scripts/
+  merge_chunks.py      # merge chunk JSON back into configs
+  langgraph_app.py     # test retrieval app
 configs/               # input configs
 config_chunks/         # default chunk output
-merged_config/         # default merge output
+merged_config/         # default merge output (test script)
 ```
 
 ## Chunk Data Model
@@ -41,14 +43,14 @@ Each chunk is a dict:
 
 ## Chunking Behavior
 
-The engine (`chunker.py`) uses:
+The engine (`chunk_builder.py`) uses:
 - Top-level stanza detection (no leading whitespace)
 - Vendor-specific stanza starters from `parsers/*`
 - A heuristic: top-level line with indented children = new stanza
 - Top-level comment lines (`!`) are separators unless they are inside a stanza
 - Large stanzas are split by size
 
-Chunk order is preserved via `chunk_index` in `chunk_utils.build_chunks`.
+Chunk order is preserved via `chunk_index` in `chunk_builder.build_chunks`.
 
 ## Adding a New OS
 
@@ -65,31 +67,34 @@ Keep weights small and include multiple signatures per OS.
 
 ## Mongo Writer
 
-`netconfig/utils/mongo_writer.py` expects chunk JSON files.
-It:
-- normalizes metadata
-- optionally generates embeddings
-- writes `devices` and `chunks` collections
+`netconfig/utils/mongo_writer.py` exposes `MongoStore`:
+- generic CRUD helpers: `insert_one`, `insert_many`, `update_one`, `delete_one`, `delete_many`, `upsert`
+No chunk-specific logic is inside the class; the runner prepares docs and calls these methods.
 
-You can attach raw configs via `--mongo-configs-dir`.
+The runner stores:
+- device metadata in the base collection (default `network_config`)
+- chunks in `<base>_chunks`
+
+Mongo defaults are read from `config.yaml` at repo root.
+
 
 ## FAISS Builder
 
-`netconfig/utils/faiss_index.py` builds an index from chunk JSON files.
+`netconfig/utils/faiss_index.py` exposes `FaissIndex`:
+`from_documents`, `load`, `save`, `add_documents`, `rebuild`, `delete_ids`, `similarity_search`
 It uses `OpenAIEmbeddings`. Set `OPENAI_API_KEY`.
 
 ## Testing
 
 Manual tests:
 ```
-python -m netconfig --config-dir configs --os-map os_map.json
-python -m netconfig --config-dir configs --os-map os_map.json --merge-config
-python -m netconfig --config-dir configs --os-map os_map.json --dump-vector
+python netconfig/netconfig_runner.py --config-dir configs --os-map os_map.json
+python netconfig/netconfig_runner.py --config-dir configs --os-map os_map.json --dump-vector
 ```
 
 Check outputs:
 - `config_chunks/`
-- `merged_config/`
+- `merged_config/` (from `test_scripts/merge_chunks.py`)
 - `index/faiss/`
 
 ## Coding Conventions

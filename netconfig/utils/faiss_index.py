@@ -1,41 +1,45 @@
-import os
-import json
-import argparse
-from typing import List
+from typing import List, Optional
 
 from langchain.schema import Document
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 
-DEFAULT_CHUNK_DIR = "config_chunks"
-DEFAULT_INDEX_DIR = "index/faiss"
+class FaissIndex:
+    def __init__(self, store: FAISS, embedder: OpenAIEmbeddings):
+        self.store = store
+        self.embedder = embedder
 
-def load_documents(chunks_dir: str) -> List[Document]:
-    docs = []
-    files = sorted([f for f in os.listdir(chunks_dir) if f.endswith(".json")])
-    if not files:
-        raise SystemExit(f"No .json chunk files found in {chunks_dir}")
-    for file in files:
-        with open(os.path.join(chunks_dir, file)) as f:
-            for c in json.load(f):
-                docs.append(Document(page_content=c["content"], metadata=c.get("metadata", {})))
-    return docs
+    @classmethod
+    def from_documents(cls, docs: List[Document], embedding_model: Optional[str] = None):
+        embed_kwargs = {}
+        if embedding_model:
+            embed_kwargs["model"] = embedding_model
+        embedder = OpenAIEmbeddings(**embed_kwargs)
+        store = FAISS.from_documents(docs, embedder)
+        return cls(store, embedder)
 
-def main():
-    argp = argparse.ArgumentParser(description="Build FAISS index from chunk JSON files.")
-    argp.add_argument("--chunks-dir", default=DEFAULT_CHUNK_DIR, help="Directory of chunks JSON files")
-    argp.add_argument("--faiss-dir", default=DEFAULT_INDEX_DIR, help="FAISS output directory")
-    argp.add_argument("--embedding-model", default=None, help="Embedding model name")
-    args = argp.parse_args()
+    @classmethod
+    def load(cls, faiss_dir: str, embedding_model: Optional[str] = None):
+        embed_kwargs = {}
+        if embedding_model:
+            embed_kwargs["model"] = embedding_model
+        embedder = OpenAIEmbeddings(**embed_kwargs)
+        store = FAISS.load_local(faiss_dir, embedder)
+        return cls(store, embedder)
 
-    docs = load_documents(args.chunks_dir)
-    embed_kwargs = {}
-    if args.embedding_model:
-        embed_kwargs["model"] = args.embedding_model
-    store = FAISS.from_documents(docs, OpenAIEmbeddings(**embed_kwargs))
-    os.makedirs(args.faiss_dir, exist_ok=True)
-    store.save_local(args.faiss_dir)
-    print(f"[DONE] FAISS index created at {args.faiss_dir} with {len(docs)} docs")
+    def save(self, faiss_dir: str):
+        self.store.save_local(faiss_dir)
 
-if __name__ == "__main__":
-    main()
+    def add_documents(self, docs: List[Document]):
+        self.store.add_documents(docs)
+
+    def rebuild(self, docs: List[Document]):
+        self.store = FAISS.from_documents(docs, self.embedder)
+
+    def delete_ids(self, ids: List[str]):
+        if hasattr(self.store, "delete"):
+            return self.store.delete(ids)
+        raise NotImplementedError("Delete is not supported by this FAISS wrapper/version.")
+
+    def similarity_search(self, query: str, k: int = 8):
+        return self.store.similarity_search(query, k=k)

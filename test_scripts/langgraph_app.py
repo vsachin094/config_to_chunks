@@ -1,3 +1,4 @@
+import argparse
 import json
 from typing import TypedDict, List, Dict, Any
 from langchain.schema import Document
@@ -7,20 +8,24 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langgraph.graph import StateGraph
 
-INDEX_DIR = "index/faiss"
+DEFAULT_INDEX_DIR = "index/faiss"
+DEFAULT_K = 8
 
 class GraphState(TypedDict):
     question: str
     retrieved_docs: List[Document]
     response: Dict[str, Any]
 
-def load_store():
-    return FAISS.load_local(INDEX_DIR, OpenAIEmbeddings())
+def load_store(index_dir: str):
+    return FAISS.load_local(index_dir, OpenAIEmbeddings())
 
-def retrieve_node(state: GraphState):
-    store = load_store()
-    state["retrieved_docs"] = store.similarity_search(state["question"], k=8)
-    return state
+def retrieve_node_factory(index_dir: str, k: int):
+    def retrieve_node(state: GraphState):
+        store = load_store(index_dir)
+        state["retrieved_docs"] = store.similarity_search(state["question"], k=k)
+        return state
+
+    return retrieve_node
 
 def reason_node(state: GraphState):
     llm = ChatOpenAI(temperature=0)
@@ -39,16 +44,21 @@ Configs: {configs}
     state["response"] = {"query": state["question"], **parsed}
     return state
 
-def build_graph():
+def build_graph(index_dir: str, k: int):
     g = StateGraph(GraphState)
-    g.add_node("retrieve", retrieve_node)
+    g.add_node("retrieve", retrieve_node_factory(index_dir, k))
     g.add_node("reason", reason_node)
     g.set_entry_point("retrieve")
     g.add_edge("retrieve", "reason")
     return g.compile()
 
 if __name__ == "__main__":
-    app = build_graph()
+    argp = argparse.ArgumentParser(description="LangGraph test app for NetConfig retrieval.")
+    argp.add_argument("--index-dir", default=DEFAULT_INDEX_DIR, help="FAISS index directory")
+    argp.add_argument("--k", type=int, default=DEFAULT_K, help="Number of docs to retrieve")
+    args = argp.parse_args()
+
+    app = build_graph(args.index_dir, args.k)
     while True:
         q = input("Ask: ")
         if q == "exit":

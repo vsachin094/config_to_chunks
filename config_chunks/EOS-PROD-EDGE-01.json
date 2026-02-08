@@ -3,28 +3,44 @@
     "content": "hostname EOS-PROD-EDGE-01",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 0,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|0"
     }
   },
   {
     "content": "ip domain-name example.net\nip name-server vrf MGMT 192.168.10.1",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 1,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|1"
     }
   },
   {
     "content": "clock timezone IST 5 30",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 2,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|2"
     }
   },
   {
     "content": "service routing protocols model multi-agent",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 3,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|3"
     }
   },
   {
@@ -32,28 +48,44 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "management api http-commands"
+      "section": "management api http-commands",
+      "os_type": "eos",
+      "chunk_index": 4,
+      "section_type": "management",
+      "chunk_id": "EOS-PROD-EDGE-01|management api http-commands|4"
     }
   },
   {
     "content": "username admin privilege 15 secret sha512 $6$examplehashedpassword",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 5,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|5"
     }
   },
   {
     "content": "aaa authorization exec default local\naaa authentication login default local",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 6,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|6"
     }
   },
   {
     "content": "tacacs-server host 10.10.10.10 key 7 070C285F4D06\ntacacs-server host 10.10.10.11 key 7 070C285F4D06\naaa authentication login default group tacacs+ local\naaa authorization exec default group tacacs+ local",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 7,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|7"
     }
   },
   {
@@ -61,7 +93,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf instance MGMT"
+      "section": "vrf instance MGMT",
+      "os_type": "eos",
+      "chunk_index": 8,
+      "section_type": "vrf",
+      "chunk_id": "EOS-PROD-EDGE-01|vrf instance MGMT|8"
     }
   },
   {
@@ -69,7 +105,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf instance CUST-A"
+      "section": "vrf instance CUST-A",
+      "os_type": "eos",
+      "chunk_index": 9,
+      "section_type": "vrf",
+      "chunk_id": "EOS-PROD-EDGE-01|vrf instance CUST-A|9"
     }
   },
   {
@@ -77,7 +117,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "vrf instance CUST-B"
+      "section": "vrf instance CUST-B",
+      "os_type": "eos",
+      "chunk_index": 10,
+      "section_type": "vrf",
+      "chunk_id": "EOS-PROD-EDGE-01|vrf instance CUST-B|10"
     }
   },
   {
@@ -85,14 +129,22 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Management1"
+      "section": "interface Management1",
+      "os_type": "eos",
+      "chunk_index": 11,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Management1|11"
     }
   },
   {
     "content": "ip route vrf MGMT 0.0.0.0/0 192.168.10.1",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 12,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|12"
     }
   },
   {
@@ -100,7 +152,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Loopback0"
+      "section": "interface Loopback0",
+      "os_type": "eos",
+      "chunk_index": 13,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Loopback0|13"
     }
   },
   {
@@ -108,7 +164,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Loopback100"
+      "section": "interface Loopback100",
+      "os_type": "eos",
+      "chunk_index": 14,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Loopback100|14"
     }
   },
   {
@@ -116,7 +176,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Ethernet1"
+      "section": "interface Ethernet1",
+      "os_type": "eos",
+      "chunk_index": 15,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Ethernet1|15"
     }
   },
   {
@@ -124,7 +188,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Ethernet2"
+      "section": "interface Ethernet2",
+      "os_type": "eos",
+      "chunk_index": 16,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Ethernet2|16"
     }
   },
   {
@@ -132,7 +200,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Ethernet3"
+      "section": "interface Ethernet3",
+      "os_type": "eos",
+      "chunk_index": 17,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Ethernet3|17"
     }
   },
   {
@@ -140,7 +212,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Ethernet4"
+      "section": "interface Ethernet4",
+      "os_type": "eos",
+      "chunk_index": 18,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Ethernet4|18"
     }
   },
   {
@@ -148,7 +224,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Ethernet5.100"
+      "section": "interface Ethernet5.100",
+      "os_type": "eos",
+      "chunk_index": 19,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Ethernet5.100|19"
     }
   },
   {
@@ -156,7 +236,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Ethernet5.200"
+      "section": "interface Ethernet5.200",
+      "os_type": "eos",
+      "chunk_index": 20,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Ethernet5.200|20"
     }
   },
   {
@@ -164,7 +248,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "router ospf 100"
+      "section": "router ospf 100",
+      "os_type": "eos",
+      "chunk_index": 21,
+      "section_type": "router",
+      "chunk_id": "EOS-PROD-EDGE-01|router ospf 100|21"
     }
   },
   {
@@ -172,7 +260,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "router bgp 65001"
+      "section": "router bgp 65001",
+      "os_type": "eos",
+      "chunk_index": 22,
+      "section_type": "router",
+      "chunk_id": "EOS-PROD-EDGE-01|router bgp 65001|22"
     }
   },
   {
@@ -180,7 +272,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "ip prefix-list EXPORT-PREFIX seq 10 permit 10.255.255.0/24"
+      "section": "ip prefix-list EXPORT-PREFIX seq 10 permit 10.255.255.0/24",
+      "os_type": "eos",
+      "chunk_index": 23,
+      "section_type": "ip",
+      "chunk_id": "EOS-PROD-EDGE-01|ip prefix-list EXPORT-PREFIX seq 10 permit 10.255.255.0/24|23"
     }
   },
   {
@@ -188,7 +284,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "route-map ISP-IN permit 10"
+      "section": "route-map ISP-IN permit 10",
+      "os_type": "eos",
+      "chunk_index": 24,
+      "section_type": "route-map",
+      "chunk_id": "EOS-PROD-EDGE-01|route-map ISP-IN permit 10|24"
     }
   },
   {
@@ -196,7 +296,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "route-map ISP-OUT permit 10"
+      "section": "route-map ISP-OUT permit 10",
+      "os_type": "eos",
+      "chunk_index": 25,
+      "section_type": "route-map",
+      "chunk_id": "EOS-PROD-EDGE-01|route-map ISP-OUT permit 10|25"
     }
   },
   {
@@ -204,7 +308,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "policy-map QOS-CUST"
+      "section": "policy-map QOS-CUST",
+      "os_type": "eos",
+      "chunk_index": 26,
+      "section_type": "policy-map",
+      "chunk_id": "EOS-PROD-EDGE-01|policy-map QOS-CUST|26"
     }
   },
   {
@@ -212,28 +320,44 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "interface Ethernet3"
+      "section": "interface Ethernet3",
+      "os_type": "eos",
+      "chunk_index": 27,
+      "section_type": "interface",
+      "chunk_id": "EOS-PROD-EDGE-01|interface Ethernet3|27"
     }
   },
   {
     "content": "ntp server 192.168.100.10 prefer\nntp server 192.168.100.11",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 28,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|28"
     }
   },
   {
     "content": "logging host 192.168.200.30\nlogging level all informational",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 29,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|29"
     }
   },
   {
     "content": "snmp-server community PROD-RO ro\nsnmp-server location DC-Bangalore\nsnmp-server contact noc@example.net",
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
-      "chunk_type": "global"
+      "chunk_type": "global",
+      "os_type": "eos",
+      "chunk_index": 30,
+      "section_type": "global",
+      "chunk_id": "EOS-PROD-EDGE-01|global|30"
     }
   },
   {
@@ -241,7 +365,11 @@
     "metadata": {
       "device": "EOS-PROD-EDGE-01",
       "chunk_type": "explicit",
-      "section": "daemon TerminAttr"
+      "section": "daemon TerminAttr",
+      "os_type": "eos",
+      "chunk_index": 31,
+      "section_type": "daemon",
+      "chunk_id": "EOS-PROD-EDGE-01|daemon TerminAttr|31"
     }
   }
 ]

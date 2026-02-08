@@ -1,4 +1,8 @@
+import os
 import re
+import json
+from typing import List, Dict, Any, Optional
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 SIZE_SPLITTER = RecursiveCharacterTextSplitter(
@@ -152,4 +156,36 @@ def chunk_config(device, text, section_start_regex, comment_prefixes=None, ignor
     if global_buffer:
         chunks.extend(emit_global(device, global_buffer, splitter))
 
+    return chunks
+
+def derive_section_type(section: Optional[str], chunk_type: Optional[str]) -> str:
+    if chunk_type == "global" or not section:
+        return "global"
+    return section.split()[0].lower()
+
+def build_chunks(device: str, os_type: str, text: str) -> List[Dict[str, Any]]:
+    from ..parsers import get_parser
+    parser = get_parser(os_type)
+    chunks = parser.chunk(device, text)
+    for idx, c in enumerate(chunks):
+        c["metadata"]["os_type"] = os_type
+        c["metadata"]["chunk_index"] = idx
+        c["metadata"]["section_type"] = derive_section_type(
+            c["metadata"].get("section"),
+            c["metadata"].get("chunk_type")
+        )
+        c["metadata"]["chunk_id"] = f"{device}|{c['metadata'].get('section','global')}|{idx}"
+    return chunks
+
+def write_chunks(device: str, chunks: List[Dict[str, Any]], out_dir: str) -> str:
+    os.makedirs(out_dir, exist_ok=True)
+    out_path = os.path.join(out_dir, f"{device}.json")
+    with open(out_path, "w") as f:
+        json.dump(chunks, f, indent=2)
+    return out_path
+
+def convert_config_to_chunks(device: str, os_type: str, text: str, out_dir: Optional[str] = None) -> List[Dict[str, Any]]:
+    chunks = build_chunks(device, os_type, text)
+    if out_dir:
+        write_chunks(device, chunks, out_dir)
     return chunks

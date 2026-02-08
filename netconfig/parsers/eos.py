@@ -1,4 +1,4 @@
-from ..chunker import build_section_regex, chunk_config
+from ..core.chunk_builder import build_section_regex, chunk_config
 
 NAME = "eos"
 
